@@ -1,6 +1,7 @@
 import Player from '../objects/player'
 import Coin from '../objects/coin'
 import FpsText from '../objects/fpsText'
+import Arena from '../objects/arena'
 
 export default class MainScene extends Phaser.Scene {
   private collectedCoinTxt: Phaser.GameObjects.Text
@@ -8,15 +9,20 @@ export default class MainScene extends Phaser.Scene {
   private timedEvent: Phaser.Time.TimerEvent
   private starsArray: Coin[] = []
   private colletedCoins: number = 0
+  
+  
+  private arena: Arena
+
 
   constructor() {
     super({ key: 'MainScene' })
   }
 
   create() {
-    this.player = new Player(this, 0, 0)
+    this.initArena()
+    this.initCoins()
+    this.player = new Player(this, this.cameras.main.width / 2, this.cameras.main.height)
     this.collectedCoinTxt = new FpsText(this, this.colletedCoins)
-    this.initStars()
 
     // display the Phaser.VERSION
     this.add
@@ -27,10 +33,16 @@ export default class MainScene extends Phaser.Scene {
       .setOrigin(1, 0)
     this.timedEvent = this.time.addEvent({ delay: 500, callback: this.onEvent, callbackScope: this, loop: true })
 
-    this.physics.add.overlap(this.player, this.starsArray, this.onCollectStar, undefined, this)
+    this.physics.add.overlap(this.player, this.starsArray, this.onCollectCoin, undefined, this)
   }
 
-  initStars() {
+  initArena() {
+    const x = this.cameras.main.width / 2
+    const y = this.cameras.main.height / 2
+    this.arena = new Arena(this, x, y)
+  }
+
+  initCoins() {
     for (let i = 0; i < 5; i++) {
       const coin = new Coin(this, 0, 0)
       coin.disableBody(true, true)
@@ -44,8 +56,8 @@ export default class MainScene extends Phaser.Scene {
   }
 
   onEvent() {
-    const desactivedStars = this.starsArray.filter(coin => !coin.active)
-    if (desactivedStars.length <= 5) {
+    const desactivedCoins = this.starsArray.filter(coin => !coin.active)
+    if (desactivedCoins.length <= 5) {
       const sceneWidth = this.cameras.main.width
       const sceneHeight = this.cameras.main.height
       const x = Phaser.Math.Between(0, sceneWidth)
@@ -61,7 +73,7 @@ export default class MainScene extends Phaser.Scene {
     }
   }
 
-  onCollectStar(player, coin) {
+  onCollectCoin(player, coin) {
     coin.disableBody(true, true)
     coin.setActive(false)
     this.colletedCoins++
