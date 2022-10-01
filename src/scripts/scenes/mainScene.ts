@@ -44,6 +44,13 @@ export default class MainScene extends Phaser.Scene {
       enemy.readyToSpawn = true
       this.enemyArray.push(enemy)
     }
+    this.physics.add.collider(this.enemyArray, this.enemyArray, this.onHitEnemyAndEnemy, undefined, this)
+  }
+  onHitEnemyAndEnemy(enemyObject: Phaser.GameObjects.GameObject, enemyObject2: Phaser.GameObjects.GameObject) {
+    const orc = enemyObject as Orc
+    const orc2 = enemyObject2 as Orc
+
+    orc.setVelocityX(orc.body.velocity.x * -1)
   }
 
   initPlayers() {
@@ -58,7 +65,7 @@ export default class MainScene extends Phaser.Scene {
     const y = this.cameras.main.height / 2
     this.arena = new Arena(this, x, y)
 
-//começando a chamar o tiled map aqui
+    //começando a chamar o tiled map aqui
 
     // const map = this.make.tilemap({key: 'map'})
     // const tileset = map.addTilesetImage('0x72_DungeonTilesetII_v1.4', 'tileset')
@@ -66,9 +73,7 @@ export default class MainScene extends Phaser.Scene {
     // map.createLayer('walls', tileset)
     // map.createLayer('floor', tileset)
 
-//terminando de chamar o tiled map aqui
-
-
+    //terminando de chamar o tiled map aqui
   }
 
   initCoins() {

@@ -1,8 +1,8 @@
 import Phaser from 'phaser'
 
 abstract class Enemy extends Phaser.Physics.Arcade.Sprite {
-  private currentScene: Phaser.Scene
-  protected readonly PLAYER_VELOCITY: number = 300
+  protected currentScene: Phaser.Scene
+  protected readonly ENEMY_VELOCITY: number = 100
   public readyToSpawn: boolean = false
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string) {
