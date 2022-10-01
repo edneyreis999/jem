@@ -1,11 +1,11 @@
 import Phaser from 'phaser'
 
-class Player extends Phaser.Physics.Arcade.Sprite {
+class PlayerOne extends Phaser.Physics.Arcade.Sprite {
   private readonly PLAYER_VELOCITY: number = 300
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
 
   constructor(scene, x, y) {
-    super(scene, x, y, 'player')
+    super(scene, x, y, 'playerOne')
 
     scene.add.existing(this)
     scene.physics.add.existing(this)
@@ -41,4 +41,4 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 }
 
-export default Player
+export default PlayerOne

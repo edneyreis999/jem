@@ -4,7 +4,9 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('player', 'assets/img/player-sprites/walk-side/walk-side-1.png')
+    this.load.image('playerOne', 'assets/img/player-sprites/walk-side/walk-side-1.png')
+    this.load.image('playerTwo', 'assets/img/frames/knight_m_idle_anim_f0.png')
+
     this.load.image('coin', 'assets/img/frames/coin_anim_f0.png')
     this.load.image('arena', 'assets/img/arena.png')
   }
