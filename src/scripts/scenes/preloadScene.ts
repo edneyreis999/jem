@@ -9,7 +9,10 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('orc', 'assets/img/frames/ogre_idle_anim_f0.png')
 
     this.load.image('coin', 'assets/img/frames/coin_anim_f0.png')
+
     this.load.image('arena', 'assets/img/arena-map.png')
+    // this.load.tilemapTiledJSON('map', 'assets/img/arena-map.json')
+    // this.load.image('tileset', 'assets/img/frames/0x72_DungeonTilesetII_v1.4.png')
   }
 
   create() {

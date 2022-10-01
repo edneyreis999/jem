@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 
+
 class Arena extends Phaser.Physics.Arcade.Sprite {
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, 'arena')
@@ -10,7 +11,11 @@ class Arena extends Phaser.Physics.Arcade.Sprite {
     this.init()
   }
 
-  init() {}
+  init() {
+
+    
+
+  }
 
   protected preUpdate(time: number, delta: number): void {}
 }

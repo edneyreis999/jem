@@ -57,6 +57,18 @@ export default class MainScene extends Phaser.Scene {
     const x = this.cameras.main.width / 2
     const y = this.cameras.main.height / 2
     this.arena = new Arena(this, x, y)
+
+//começando a chamar o tiled map aqui
+
+    // const map = this.make.tilemap({key: 'map'})
+    // const tileset = map.addTilesetImage('0x72_DungeonTilesetII_v1.4', 'tileset')
+
+    // map.createLayer('walls', tileset)
+    // map.createLayer('floor', tileset)
+
+//terminando de chamar o tiled map aqui
+
+
   }
 
   initCoins() {
