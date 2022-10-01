@@ -1,33 +1,38 @@
-import Player from '../objects/player'
+import PlayerOne from '../objects/playerOne'
+import PlayerTwo from '../objects/playerTwo'
+
 import Coin from '../objects/coin'
 import FpsText from '../objects/fpsText'
 
 export default class MainScene extends Phaser.Scene {
-  private collectedCoinTxt: Phaser.GameObjects.Text
-  private player: Phaser.Physics.Arcade.Sprite
+  private collectedCoinOne: Phaser.GameObjects.Text
+  private collectedCoinTwo: Phaser.GameObjects.Text
+  private playerOne: Phaser.Physics.Arcade.Sprite
+  private playerTwo: Phaser.Physics.Arcade.Sprite
   private timedEvent: Phaser.Time.TimerEvent
   private starsArray: Coin[] = []
-  private colletedCoins: number = 0
+  private colletedCoinsOne: number = 0
+  private colletedCoinsTwo: number = 0
+
 
   constructor() {
     super({ key: 'MainScene' })
   }
 
   create() {
-    this.player = new Player(this, 0, 0)
-    this.collectedCoinTxt = new FpsText(this, this.colletedCoins)
+    this.playerOne = new PlayerOne(this, 100, 100)
+    this.playerTwo = new PlayerTwo(this, 200, 200)
+
+    this.collectedCoinOne = new FpsText(this, 50, 10, this.colletedCoinsOne)
+    this.collectedCoinTwo = new FpsText(this, 1100, 10, this.colletedCoinsTwo)
+
     this.initStars()
 
-    // display the Phaser.VERSION
-    this.add
-      .text(this.cameras.main.width - 15, 15, `Phaser v${this.colletedCoins}`, {
-        color: '#000000',
-        fontSize: '24px'
-      })
-      .setOrigin(1, 0)
     this.timedEvent = this.time.addEvent({ delay: 500, callback: this.onEvent, callbackScope: this, loop: true })
 
-    this.physics.add.overlap(this.player, this.starsArray, this.onCollectStar, undefined, this)
+    this.physics.add.overlap(this.playerOne, this.starsArray, this.onCollectCoinOne, undefined, this)
+    this.physics.add.overlap(this.playerTwo, this.starsArray, this.onCollectCoinTwo, undefined, this)
+
   }
 
   initStars() {
@@ -40,7 +45,9 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update() {
-    this.collectedCoinTxt.update(this.colletedCoins)
+    this.collectedCoinOne.update(this.colletedCoinsOne)
+    this.collectedCoinTwo.update(this.colletedCoinsTwo)
+
   }
 
   onEvent() {
@@ -61,9 +68,15 @@ export default class MainScene extends Phaser.Scene {
     }
   }
 
-  onCollectStar(player, coin) {
+  onCollectCoinOne(playerOne, coin) {
     coin.disableBody(true, true)
     coin.setActive(false)
-    this.colletedCoins++
+    this.colletedCoinsOne++
+  }
+
+  onCollectCoinTwo(playerTwo, coin) {
+    coin.disableBody(true, true)
+    coin.setActive(false)
+    this.colletedCoinsTwo++
   }
 }
