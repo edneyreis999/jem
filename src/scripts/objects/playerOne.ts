@@ -1,26 +1,12 @@
 import Phaser from 'phaser'
+import Player from './player'
 
-class PlayerOne extends Phaser.Physics.Arcade.Sprite {
-  private readonly PLAYER_VELOCITY: number = 300
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys
-
+class PlayerOne extends Player {
   constructor(scene, x, y) {
     super(scene, x, y, 'playerOne')
-
-    scene.add.existing(this)
-    scene.physics.add.existing(this)
-
-    this.scale = 4
-
-    this.init()
   }
 
-  init() {
-    this.cursors = this.scene.input.keyboard.createCursorKeys()
-    this.setCollideWorldBounds(true)
-  }
-
-  protected preUpdate(time: number, delta: number): void {
+  movment(): void {
     const { left, right, up, down } = this.cursors
 
     if (left.isDown) {
