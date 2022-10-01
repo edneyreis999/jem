@@ -7,7 +7,7 @@ export default class Coin extends Phaser.Physics.Arcade.Sprite implements IColle
     scene.add.existing(this)
     scene.physics.add.existing(this)
     this.setCollideWorldBounds(true)
-    this.scale = 8
+    this.scale = 4
   }
 
   onBeCollected(): void {

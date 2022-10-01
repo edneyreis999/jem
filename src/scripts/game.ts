@@ -1,14 +1,14 @@
-import 'phaser'
+import Phaser from 'phaser'
 import MainScene from './scenes/mainScene'
 import PreloadScene from './scenes/preloadScene'
 import HUDScene from './scenes/hudScene'
 
-const DEFAULT_WIDTH = 1280
-const DEFAULT_HEIGHT = 720
+const DEFAULT_WIDTH = document.body.offsetWidth
+const DEFAULT_HEIGHT = document.body.offsetHeight
 
 const config = {
   type: Phaser.AUTO,
-  backgroundColor: '#ffffff',
+  backgroundColor: '#606252',
   scale: {
     parent: 'phaser-game',
     mode: Phaser.Scale.FIT,

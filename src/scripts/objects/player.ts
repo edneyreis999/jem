@@ -15,7 +15,7 @@ abstract class Player extends Phaser.Physics.Arcade.Sprite {
     scene.add.existing(this)
     scene.physics.add.existing(this)
 
-    this.scale = 4
+    this.scale = 2
 
     this.init()
   }

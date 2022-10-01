@@ -8,7 +8,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('playerTwo', 'assets/img/frames/knight_m_idle_anim_f0.png')
 
     this.load.image('coin', 'assets/img/frames/coin_anim_f0.png')
-    this.load.image('arena', 'assets/img/arena.png')
+    this.load.image('arena', 'assets/img/arena-map.png')
   }
 
   create() {
