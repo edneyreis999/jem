@@ -1,11 +1,10 @@
-import PhaserLogo from '../objects/phaserLogo'
+import Player from '../objects/player'
 import Coin from '../objects/coin'
 import FpsText from '../objects/fpsText'
 
 export default class MainScene extends Phaser.Scene {
   private collectedCoinTxt: Phaser.GameObjects.Text
   private player: Phaser.Physics.Arcade.Sprite
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private timedEvent: Phaser.Time.TimerEvent
   private starsArray: Coin[] = []
   private colletedCoins: number = 0
@@ -15,8 +14,8 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    this.player = new PhaserLogo(this, 0, 0)
-    this.collectedCoinTxt = new FpsText(this)
+    this.player = new Player(this, 0, 0)
+    this.collectedCoinTxt = new FpsText(this, this.colletedCoins)
     this.initStars()
 
     // display the Phaser.VERSION
@@ -26,8 +25,6 @@ export default class MainScene extends Phaser.Scene {
         fontSize: '24px'
       })
       .setOrigin(1, 0)
-
-    this.cursors = this.input.keyboard.createCursorKeys()
     this.timedEvent = this.time.addEvent({ delay: 500, callback: this.onEvent, callbackScope: this, loop: true })
 
     this.physics.add.overlap(this.player, this.starsArray, this.onCollectStar, undefined, this)
@@ -43,25 +40,7 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update() {
-    const { left, right, up, down } = this.cursors
-
-    if (left.isDown) {
-      this.player.setVelocityX(-300)
-    } else if (right.isDown) {
-      this.player.setVelocityX(300)
-    } else {
-      this.player.setVelocityX(0)
-    }
-
-    if (up.isDown) {
-      this.player.setVelocityY(-300)
-    } else if (down.isDown) {
-      this.player.setVelocityY(300)
-    } else {
-      this.player.setVelocityY(0)
-    }
-
-    this.collectedCoinTxt.update()
+    this.collectedCoinTxt.update(this.colletedCoins)
   }
 
   onEvent() {

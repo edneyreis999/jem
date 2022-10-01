@@ -7,7 +7,7 @@ export default class FpsText extends Phaser.GameObjects.Text {
     this.coinConter = coinCount;
   }
 
-  public update() {
-    this.setText(`coins: ${this.coinConter}`)
+  public update(coinConter = 0) {
+    this.setText(`coins: ${coinConter}`)
   }
 }
