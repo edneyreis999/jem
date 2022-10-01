@@ -31,7 +31,7 @@ export default class MainScene extends Phaser.Scene {
   }
 
   initPlayers() {
-    this.playerOne = new PlayerOne(this, 100, 100)
+    this.playerOne = new PlayerOne(this, 200, 100)
     this.playerTwo = new PlayerTwo(this, 200, 200)
   }
 
