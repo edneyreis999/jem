@@ -9,13 +9,14 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('orc', 'assets/img/frames/ogre_idle_anim_f0.png')
 
     this.load.image('coin', 'assets/img/frames/coin_anim_f0.png')
-    this.load.image('arena', 'assets/img/arena-map.png')
+    this.load.tilemapTiledJSON('arena', 'assets/arena-map.json')
+    this.load.image('tileset', 'assets/img/0x72_DungeonTilesetII_v1.4.png')
   }
 
   create() {
     this.scene.start('MainScene')
-    this.scene.start('HUDScene');
-    this.scene.bringToTop('HUDScene');
+    this.scene.start('HUDScene')
+    this.scene.bringToTop('HUDScene')
 
     /**
      * This is how you would dynamically import the mainScene class (with code splitting),

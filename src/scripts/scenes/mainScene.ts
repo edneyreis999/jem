@@ -47,8 +47,8 @@ export default class MainScene extends Phaser.Scene {
   }
 
   initPlayers() {
-    this.playerOne = new PlayerOne(this, 200, 100)
-    this.playerTwo = new PlayerTwo(this, 200, 200)
+    this.playerOne = new PlayerOne(this, 400, 350)
+    this.playerTwo = new PlayerTwo(this, 500, 350)
     this.playerArray.push(this.playerOne as Player)
     this.playerArray.push(this.playerTwo as Player)
   }
@@ -57,6 +57,29 @@ export default class MainScene extends Phaser.Scene {
     const x = this.cameras.main.width / 2
     const y = this.cameras.main.height / 2
     this.arena = new Arena(this, x, y)
+
+    const map = this.initMap()
+    const layers = this.initLayers(map)
+    const startPoints = this.getStartPoints(layers.startPoints)
+    
+    this.physics.add.collider(this.playerArray, layers.walls)
+  }
+
+  initMap() {
+    const map = this.make.tilemap({ key: 'arena' })
+    map.addTilesetImage('0x72_DungeonTilesetII_v1.4', 'tileset')
+    return map
+  }
+
+  initLayers(map) {
+    const tileset = map.getTileset('0x72_DungeonTilesetII_v1.4')
+    const floor = map.createLayer('floor', tileset)
+    const walls = map.createLayer('walls', tileset)
+    const startPoints = map.getObjectLayer('start_point')
+
+    walls.setCollisionByProperty({ collider: true })
+
+    return { floor, walls, startPoints }
   }
 
   initCoins() {
@@ -122,6 +145,14 @@ export default class MainScene extends Phaser.Scene {
 
         player.hitEnemy(orc)
       }
+    }
+  }
+
+  getStartPoints(startPointsLayer) {
+    const startPoints = startPointsLayer.objects
+    return {
+      startone: startPoints.find(point => point.name === 'start_player_two'),
+      starttwo: startPoints.find(point => point.name === 'start_player_two')
     }
   }
 }
