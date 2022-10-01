@@ -3,6 +3,7 @@ import PlayerTwo from '../objects/playerTwo'
 
 import Coin from '../objects/coin'
 import FpsText from '../objects/fpsText'
+import Arena from '../objects/arena'
 
 export default class MainScene extends Phaser.Scene {
   private collectedCoinOne: Phaser.GameObjects.Text
@@ -13,6 +14,9 @@ export default class MainScene extends Phaser.Scene {
   private starsArray: Coin[] = []
   private colletedCoinsOne: number = 0
   private colletedCoinsTwo: number = 0
+  
+  
+  private arena: Arena
 
 
   constructor() {
@@ -20,13 +24,14 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
+    this.initArena()
+    this.initCoins()
     this.playerOne = new PlayerOne(this, 100, 100)
     this.playerTwo = new PlayerTwo(this, 200, 200)
 
     this.collectedCoinOne = new FpsText(this, 50, 10, this.colletedCoinsOne)
     this.collectedCoinTwo = new FpsText(this, 1100, 10, this.colletedCoinsTwo)
 
-    this.initStars()
 
     this.timedEvent = this.time.addEvent({ delay: 500, callback: this.onEvent, callbackScope: this, loop: true })
 
@@ -35,7 +40,13 @@ export default class MainScene extends Phaser.Scene {
 
   }
 
-  initStars() {
+  initArena() {
+    const x = this.cameras.main.width / 2
+    const y = this.cameras.main.height / 2
+    this.arena = new Arena(this, x, y)
+  }
+
+  initCoins() {
     for (let i = 0; i < 5; i++) {
       const coin = new Coin(this, 0, 0)
       coin.disableBody(true, true)
@@ -51,8 +62,9 @@ export default class MainScene extends Phaser.Scene {
   }
 
   onEvent() {
-    const desactivedStars = this.starsArray.filter(coin => !coin.active)
-    if (desactivedStars.length <= 5) {
+    const desactivedCoins = this.starsArray.filter(coin => !coin.active)
+    console.log(desactivedCoins)
+    if (desactivedCoins.length <= 5) {
       const sceneWidth = this.cameras.main.width
       const sceneHeight = this.cameras.main.height
       const x = Phaser.Math.Between(0, sceneWidth)
