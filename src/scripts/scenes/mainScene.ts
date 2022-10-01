@@ -2,42 +2,37 @@ import PlayerOne from '../objects/playerOne'
 import PlayerTwo from '../objects/playerTwo'
 
 import Coin from '../objects/coin'
-import FpsText from '../objects/fpsText'
 import Arena from '../objects/arena'
+import Player from '../objects/player'
 
 export default class MainScene extends Phaser.Scene {
-  private collectedCoinOne: Phaser.GameObjects.Text
-  private collectedCoinTwo: Phaser.GameObjects.Text
   private playerOne: Phaser.Physics.Arcade.Sprite
   private playerTwo: Phaser.Physics.Arcade.Sprite
   private timedEvent: Phaser.Time.TimerEvent
   private starsArray: Coin[] = []
-  private colletedCoinsOne: number = 0
-  private colletedCoinsTwo: number = 0
-  
-  
-  private arena: Arena
 
+  private arena: Arena
 
   constructor() {
     super({ key: 'MainScene' })
   }
 
   create() {
+    // set background color
+    this.cameras.main.setBackgroundColor('#606252')
+
     this.initArena()
     this.initCoins()
-    this.playerOne = new PlayerOne(this, 100, 100)
-    this.playerTwo = new PlayerTwo(this, 200, 200)
-
-    this.collectedCoinOne = new FpsText(this, 50, 10, this.colletedCoinsOne)
-    this.collectedCoinTwo = new FpsText(this, 1100, 10, this.colletedCoinsTwo)
-
+    this.initPlayers()
 
     this.timedEvent = this.time.addEvent({ delay: 500, callback: this.onEvent, callbackScope: this, loop: true })
+    this.physics.add.overlap(this.playerOne, this.starsArray, this.onCollectCoin, undefined, this)
+    this.physics.add.overlap(this.playerTwo, this.starsArray, this.onCollectCoin, undefined, this)
+  }
 
-    this.physics.add.overlap(this.playerOne, this.starsArray, this.onCollectCoinOne, undefined, this)
-    this.physics.add.overlap(this.playerTwo, this.starsArray, this.onCollectCoinTwo, undefined, this)
-
+  initPlayers() {
+    this.playerOne = new PlayerOne(this, 100, 100)
+    this.playerTwo = new PlayerTwo(this, 200, 200)
   }
 
   initArena() {
@@ -55,15 +50,10 @@ export default class MainScene extends Phaser.Scene {
     }
   }
 
-  update() {
-    this.collectedCoinOne.update(this.colletedCoinsOne)
-    this.collectedCoinTwo.update(this.colletedCoinsTwo)
-
-  }
+  update() {}
 
   onEvent() {
     const desactivedCoins = this.starsArray.filter(coin => !coin.active)
-    console.log(desactivedCoins)
     if (desactivedCoins.length <= 5) {
       const sceneWidth = this.cameras.main.width
       const sceneHeight = this.cameras.main.height
@@ -80,15 +70,15 @@ export default class MainScene extends Phaser.Scene {
     }
   }
 
-  onCollectCoinOne(playerOne, coin) {
-    coin.disableBody(true, true)
-    coin.setActive(false)
-    this.colletedCoinsOne++
-  }
+  onCollectCoin(playerObject: Phaser.GameObjects.GameObject, coinObject: Phaser.GameObjects.GameObject) {
+    if (playerObject.name === 'playerOne' || playerObject.name === 'playerTwo') {
+      if (coinObject.name === 'coin') {
+        const player = playerObject as Player
+        const coin = coinObject as Coin
 
-  onCollectCoinTwo(playerTwo, coin) {
-    coin.disableBody(true, true)
-    coin.setActive(false)
-    this.colletedCoinsTwo++
+        coin.onBeCollected()
+        player.collectCoin(coin)
+      }
+    }
   }
 }

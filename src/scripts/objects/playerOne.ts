@@ -4,6 +4,8 @@ import Player from './player'
 class PlayerOne extends Player {
   constructor(scene, x, y) {
     super(scene, x, y, 'playerOne')
+
+    this.name = 'playerOne'
   }
 
   movment(): void {
