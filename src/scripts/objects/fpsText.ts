@@ -1,11 +1,13 @@
 export default class FpsText extends Phaser.GameObjects.Text {
-  constructor(scene) {
+  private coinConter:number;
+  constructor(scene, coinCount = 0) {
     super(scene, 10, 10, '', { color: 'black', fontSize: '28px' })
     scene.add.existing(this)
     this.setOrigin(0)
+    this.coinConter = coinCount;
   }
 
   public update() {
-    this.setText(`fps: ${Math.floor(this.scene.game.loop.actualFps)}`)
+    this.setText(`coins: ${this.coinConter}`)
   }
 }
