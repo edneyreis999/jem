@@ -5,6 +5,9 @@ export default class HUDScene extends Phaser.Scene {
   private playerOneCoinTxt: Phaser.GameObjects.Text
   private playerTwoCoinTxt: Phaser.GameObjects.Text
 
+  private playerOneHealthTxt: Phaser.GameObjects.Text
+  private playerTwoHealthTxt: Phaser.GameObjects.Text
+
   constructor() {
     super({
       key: 'HUDScene',
@@ -26,16 +29,29 @@ export default class HUDScene extends Phaser.Scene {
     })
     this.playerTwoCoinTxt.setOrigin(0)
 
+    this.playerOneHealthTxt = this.add.text(50, 30, 'Health: 100', {
+      color: 'black',
+      fontSize: '28px'
+    })
+    this.playerOneCoinTxt.setOrigin(0)
+    this.playerTwoHealthTxt = this.add.text(1000, 30, 'Health: 100', {
+      color: 'black',
+      fontSize: '28px'
+    })
+    this.playerOneCoinTxt.setOrigin(0)
+
     // create events
-    level.events.on(EEVENTS.PLAYER_COLLECT_COIN, this.playerCollectCoin, this)
+    level.events.on(EEVENTS.PLAYER_CHANGE_STATUS, this.playerChangeStatus, this)
   }
 
-  playerCollectCoin(player: Player) {
+  playerChangeStatus(player: Player) {
     if (player.name === 'playerOne') {
       this.playerOneCoinTxt.setText(`Player 1: ${player.getCoins()}`)
+      this.playerOneHealthTxt.setText(`Health: ${player.getHealth()}`)
     }
     if (player.name === 'playerTwo') {
       this.playerTwoCoinTxt.setText(`Player 2: ${player.getCoins()}`)
+      this.playerTwoHealthTxt.setText(`Health: ${player.getHealth()}`)
     }
   }
 }
