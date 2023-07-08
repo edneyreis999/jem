@@ -1,61 +1,39 @@
 {
-  "name": "phaser-project-template",
-  "version": "3.55.2",
-  "description": "Phaser 3 starter template with TypeScript and webpack.",
-  "homepage": "https://github.com/yandeu/phaser-project-template#readme",
-  "main": "index.js",
+  "name": "phaser3-typescript-project-template",
+  "version": "1.2.0",
+  "description": "A Phaser 3 Project Template using Rollup and TypeScript",
+  "main": "src/game.ts",
   "scripts": {
-    "start": "webpack serve --config webpack/webpack.dev.js",
-    "build": "rimraf dist && webpack --config webpack/webpack.prod.js",
-    "bundle": "npm run build",
-    "serve": "serve dist",
-    "format": "prettier --check src/scripts/**",
-    "format:write": "prettier --write src/scripts/**"
-  },
-  "keywords": [
-    "Phaser",
-    "Phaser 3",
-    "Phaser3",
-    "html5 game",
-    "TypeScript",
-    "webpack",
-    "starter"
-  ],
-  "author": {
-    "name": "Yannick Deubel",
-    "url": "https://github.com/yandeu"
+    "dev": "rollup --config rollup.config.dev.mjs",
+    "build": "rollup --config rollup.config.dist.mjs",
+    "watch": "rollup --watch --config rollup.config.dev.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yandeu/phaser-project-template.git"
+    "url": "git+https://github.com/photonstorm/phaser3-typescript-project-template.git"
   },
-  "template": {
-    "name": "phaser-project-template",
-    "url": "https://github.com/yandeu/phaser-project-template",
-    "author": "Yannick Deubel (https://github.com/yandeu)"
-  },
-  "engines": {
-    "node": ">=12"
-  },
+  "author": "Richard Davey <rich@photonstorm.com> (http://www.photonstorm.com)",
   "license": "MIT",
-  "dependencies": {
-    "phaser": "^3.55.2"
+  "bugs": {
+    "url": "https://github.com/photonstorm/phaser3-typescript-project-template/issues"
   },
+  "homepage": "https://github.com/photonstorm/phaser3-typescript-project-template#readme",
   "devDependencies": {
-    "@yandeu/prettier-config": "^0.0.3",
-    "copy-webpack-plugin": "^10.1.0",
-    "html-webpack-plugin": "^5.5.0",
-    "javascript-obfuscator": "^4.0.0",
-    "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
-    "serve": "^13.0.2",
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.5.3",
-    "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0",
-    "webpack-merge": "^5.8.0",
-    "webpack-obfuscator": "^3.5.0",
-    "workbox-webpack-plugin": "^6.4.2"
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "phaser": "^3.60.0",
+    "prettier": "^3.0.0",
+    "rollup": "^3.20.2",
+    "rollup-plugin-serve": "^2.0.2",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.3"
   }
 }

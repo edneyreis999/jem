@@ -1,0 +1,20 @@
+{
+  "player": {
+    "name": "Player",
+    "init": {
+      "properties": {
+        "gold": 1000
+      }
+    }
+  },
+  "factory": {
+    "name": "Factory",
+    "init": {
+      "properties": {
+        "x": 200,
+        "y": 450,
+        "texture": "potion-shop"
+      }
+    }
+  }
+}

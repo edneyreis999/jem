@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "ES2015",
-
+    "target": "es5",
+    "moduleResolution": "node",
+    "lib": ["dom", "esnext"],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,11 +12,8 @@
     "allowUnreachableCode": false,
     "noImplicitAny": false,
     "sourceMap": true,
-    "strictPropertyInitialization": false,
-
-    "moduleResolution": "node",
-    "lib": ["dom", "esnext"]
+    "strictPropertyInitialization": false
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
