@@ -5,6 +5,8 @@ import { FactoryMenuHudScene } from './core/objects/buildings/factory/hud/factor
 import { ShopMenuHudScene } from './core/objects/buildings/shop/hud/shop-menu1-hud';
 import { WarehouseMenuHudScene } from './core/objects/buildings/warehouse/hud/shop-menu1-hud';
 import PreloadScene from './preload-scene';
+import { FactoryMenuHudScene2 } from './core/objects/buildings/factory/hud/factory-menu2-hud';
+import { FactoryMenuHudScene3 } from './core/objects/buildings/factory/hud/factory-menu3-hud';
 export default class Demo extends Phaser.Scene {
   constructor() {
     super('demo');
@@ -33,6 +35,8 @@ const config = {
     HUDScene,
     MainScene,
     FactoryMenuHudScene,
+    FactoryMenuHudScene2,
+    FactoryMenuHudScene3,
     ShopMenuHudScene,
     WarehouseMenuHudScene,
   ],

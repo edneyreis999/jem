@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
-export class FactoryMenuHudScene extends Phaser.Scene {
+export class FactoryMenuHudScene3 extends Phaser.Scene {
   constructor() {
-    super({ key: 'FactoryMenuHudScene' });
+    super({ key: 'FactoryMenuHudScene3' });
   }
 
   create() {
@@ -38,41 +38,43 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     });
     Phaser.Display.Align.In.TopRight(closeButton, background);
 
-    let potionAButton = this.add.sprite(0,0, 'potionA-button');
-    potionAButton.setOrigin(1, 0);
-    potionAButton.setDisplaySize(200, 50);
-    potionAButton.setInteractive();
-    potionAButton.on('pointerdown', () => {
-      this.scene.start('FactoryMenuHudScene2');
-    });
-    Phaser.Display.Align.In.TopCenter(potionAButton, background, 0, -50);
-
-
     let sliderBackground = this.add.rectangle(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      120,
+      200,
       5,
       0x175682
     );
-    Phaser.Display.Align.In.BottomCenter(sliderBackground, background, 0, -20);
+    Phaser.Display.Align.In.TopCenter(sliderBackground, background, 0, -70);
 
     let sliderButton = this.add.circle(
       this.cameras.main.centerX - 50,
       this.cameras.main.centerY,
-      20,
+      10,
       0x175682
     );
     sliderButton.setInteractive();
     sliderButton.on('drag', (pointer, dragX, dragY) => {
       sliderButton.x = Phaser.Math.Clamp(
         dragX,
-        this.cameras.main.centerX - 50,
-        this.cameras.main.centerX + 50
+        this.cameras.main.centerX - 95,
+        this.cameras.main.centerX + 95
       );
     });
     this.input.setDraggable(sliderButton);
-    Phaser.Display.Align.In.BottomCenter(sliderButton, background, 0, -5);
+    Phaser.Display.Align.In.TopCenter(sliderButton, background, 0, -60);
+
+    // ------------ make lote button ------------
+
+    let makeLoteButton = this.add.sprite(0, 0, 'makePotion-button');
+    makeLoteButton.setOrigin(1, 0);
+    makeLoteButton.setDisplaySize(40, 40);
+    makeLoteButton.setScale(1);
+    makeLoteButton.setInteractive();
+    makeLoteButton.on('pointerdown', () => {
+      this.scene.start('FactoryMenuHudScene3');
+    });
+    Phaser.Display.Align.In.BottomCenter(makeLoteButton, background, 0, -5);
 
 
   }
