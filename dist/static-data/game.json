@@ -11,8 +11,8 @@
     "name": "Factory",
     "init": {
       "properties": {
-        "x": 180,
-        "y": 300,
+        "x": 288,
+        "y": 350,
         "texture": "potion-factory"
       }
     }
@@ -21,8 +21,8 @@
     "name": "Shop",
     "init": {
       "properties": {
-        "x": 0,
-        "y": 450,
+        "x": 256,
+        "y": 512,
         "texture": "potion-shop"
       }
     }

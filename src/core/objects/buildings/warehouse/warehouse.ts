@@ -17,6 +17,8 @@ export class Warehouse extends Phaser.GameObjects.Sprite {
 
     this.on('pointerdown', this.onPointerDown, this);
     this.on('pointerup', this.onPointerUp, this);
+    this.on('pointerover', this.onPointerHover, this);
+    this.on('pointerout', this.onPointerOut, this);
   }
 
   private onPointerDown() {
@@ -27,4 +29,14 @@ export class Warehouse extends Phaser.GameObjects.Sprite {
   private onPointerUp() {
     this.clearTint();
   }
+
+  private onPointerHover(){
+    this.setScale(1);
+  }
+
+  private onPointerOut(){
+    this.setScale(0.65);
+  }
+
+  
 }
