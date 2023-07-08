@@ -11,9 +11,29 @@
     "name": "Factory",
     "init": {
       "properties": {
-        "x": 200,
+        "x": 180,
+        "y": 300,
+        "texture": "potion-factory"
+      }
+    }
+  },
+  "shop": {
+    "name": "Shop",
+    "init": {
+      "properties": {
+        "x": 300,
         "y": 450,
         "texture": "potion-shop"
+      }
+    }
+  },
+  "warehouse": {
+    "name": "Warehouse",
+    "init": {
+      "properties": {
+        "x": 420,
+        "y": 300,
+        "texture": "potion-warehouse"
       }
     }
   }

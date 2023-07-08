@@ -11,8 +11,8 @@ export class Factory extends Phaser.GameObjects.Sprite {
     this.currentScene = scene;
     this.currentScene.add.existing(this);
     this.setInteractive();
-
-    this.setDisplaySize(160, 120);
+    this.setOrigin(0, 0);
+    this.setDisplaySize(332 / 1.5, 147 / 1.5);
 
     this.on('pointerdown', this.onPointerDown, this);
     this.on('pointerup', this.onPointerUp, this);
