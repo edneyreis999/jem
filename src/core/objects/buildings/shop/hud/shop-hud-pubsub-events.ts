@@ -1,6 +1,4 @@
-export enum SHOP_SUB_EVENTS {}
-
-export enum SHOP_PUB_EVENTS {
+export enum SHOP_SUB_EVENTS {
   /**
    * @from: 'Shop',
    * @to: 'ShopHUDScene',
@@ -8,3 +6,5 @@ export enum SHOP_PUB_EVENTS {
    */
   SHOP_DISPLAY_HUD = 'shop.display.hud',
 }
+
+export enum SHOP_PUB_EVENTS {}

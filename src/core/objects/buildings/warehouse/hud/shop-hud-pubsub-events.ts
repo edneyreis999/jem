@@ -1,6 +1,4 @@
-export enum WAREHOUSE_SUB_EVENTS {}
-
-export enum WAREHOUSE_PUB_EVENTS {
+export enum WAREHOUSE_SUB_EVENTS {
   /**
    * @from: 'Warehouse',
    * @to: 'WarehouseHUDScene',
@@ -8,3 +6,5 @@ export enum WAREHOUSE_PUB_EVENTS {
    */
   WAREHOUSE_DISPLAY_HUD = 'warehouse.display.hud',
 }
+
+export enum WAREHOUSE_PUB_EVENTS {}

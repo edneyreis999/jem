@@ -1,7 +1,9 @@
 import * as Phaser from 'phaser';
 import HUDScene from './core/gold/gold-hud-scene';
 import MainScene from './core/main-scene';
-import { Menu1HudScene } from './core/objects/buildings/factory/hud/factory-menu1-hud';
+import { FactoryMenuHudScene } from './core/objects/buildings/factory/hud/factory-menu1-hud';
+import { ShopMenuHudScene } from './core/objects/buildings/shop/hud/shop-menu1-hud';
+import { WarehouseMenuHudScene } from './core/objects/buildings/warehouse/hud/shop-menu1-hud';
 import PreloadScene from './preload-scene';
 export default class Demo extends Phaser.Scene {
   constructor() {
@@ -26,7 +28,14 @@ const config = {
       height: 1400,
     },
   },
-  scene: [PreloadScene, HUDScene, MainScene, Menu1HudScene],
+  scene: [
+    PreloadScene,
+    HUDScene,
+    MainScene,
+    FactoryMenuHudScene,
+    ShopMenuHudScene,
+    WarehouseMenuHudScene,
+  ],
 };
 
 new Phaser.Game(config);

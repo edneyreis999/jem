@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
-export class FactoryMenuHudScene extends Phaser.Scene {
+export class ShopMenuHudScene extends Phaser.Scene {
   constructor() {
-    super({ key: 'FactoryMenuHudScene' });
+    super({ key: 'ShopMenuHudScene' });
   }
 
   create() {
@@ -14,7 +14,7 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     );
     background.setInteractive();
 
-    let title = this.add.text(0, 0, 'Factory menu', {
+    let title = this.add.text(0, 0, 'Shop menu', {
       fontSize: '32px',
       color: '#fff',
     });

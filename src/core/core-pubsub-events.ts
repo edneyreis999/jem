@@ -6,4 +6,6 @@ export enum CORE_SUB_EVENTS {
    * @description: 'Used to display factory HUD',
    */
   FACTORY_DISPLAY_HUD = 'factory.display.hud',
+  SHOP_DISPLAY_HUD = 'shop.display.hud',
+  WAREHOUSE_DISPLAY_HUD = 'warehouse.display.hud',
 }

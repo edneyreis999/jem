@@ -2,7 +2,7 @@ import * as Phaser from 'phaser';
 import { SUB_GOLD_EVENTS } from './gold-pubsub-events';
 
 export default class HUDScene extends Phaser.Scene {
-  private playerOneCoinTxt: Phaser.GameObjects.Text;
+  private playerCoinTxt: Phaser.GameObjects.Text;
 
   constructor() {
     super({
@@ -12,15 +12,12 @@ export default class HUDScene extends Phaser.Scene {
   }
 
   create() {
-    this.playerOneCoinTxt = this.add.text(50, 10, 'Gold: 0', {
+    this.playerCoinTxt = this.add.text(50, 10, 'Gold: 0', {
       color: 'white',
       fontSize: '28px',
     });
 
-    console.log('---- criou o playerOneCoinTxt ----');
-    console.log(this.playerOneCoinTxt.getWrappedText());
-
-    this.playerOneCoinTxt.setOrigin(0);
+    this.playerCoinTxt.setOrigin(0);
     const level = this.scene.get('MainScene');
 
     // create events
@@ -32,7 +29,6 @@ export default class HUDScene extends Phaser.Scene {
   }
 
   updateGoldText(gold: number) {
-    console.log('---- updateGoldText ----', gold);
-    this.playerOneCoinTxt.setText(`Gold: ${gold}`);
+    this.playerCoinTxt.setText(`Gold: ${gold}`);
   }
 }
