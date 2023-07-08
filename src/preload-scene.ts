@@ -5,10 +5,11 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('potion-shop', 'assets/potion-shop.jpg');
-    this.load.image('potion-factory', 'assets/potion-factory.jpg');
-    this.load.image('potion-warehouse', 'assets/potion-warehouse.jpg');
-    this.load.image('close-button', 'assets/close-button.png');
+    this.load.image('background', 'assets/background.jpg');
+    this.load.image('potion-shop', 'assets/sell_button.png');
+    this.load.image('potion-factory', 'assets/prod_button.png');
+    this.load.image('potion-warehouse', 'assets/keep_button.png');
+    this.load.image('close-button', 'assets/close-button.svg');
     this.load.image('libs', 'assets/libs.png');
     this.load.glsl('bundle', 'assets/plasma-bundle.glsl.js');
     this.load.glsl('stars', 'assets/starfields.glsl.js');
