@@ -1,4 +1,5 @@
 import * as Phaser from 'phaser';
+import { PotionType } from '../../../potions/potion-interface';
 export class FactoryMenuHudScene extends Phaser.Scene {
   constructor() {
     super({ key: 'FactoryMenuHudScene' });
@@ -34,14 +35,16 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     });
     Phaser.Display.Align.In.TopRight(closeButton, background);
 
-    // -------------------- potion A button ----------------------
+    // -------------------- potion COMMON button ----------------------
 
     let potionAButton = this.add.sprite(0, 0, 'potionA-button');
     potionAButton.setOrigin(1, 0);
     potionAButton.setDisplaySize(65, 50);
     potionAButton.setInteractive();
     potionAButton.on('pointerdown', () => {
-      this.scene.start('FactoryMenuHudScene2');
+      this.scene.start('FactoryMenuHudScene2', {
+        potionType: PotionType.COMMON,
+      });
     });
     Phaser.Display.Align.In.TopLeft(potionAButton, background, -20, -55);
 
@@ -54,14 +57,16 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     });
     Phaser.Display.Align.In.TopRight(pricePotionA, background, -10, -60);
 
-    // -------------------- potion B button ----------------------
+    // -------------------- potion UNCOMMON button ----------------------
 
     let potionBButton = this.add.sprite(0, 0, 'potionB-button');
     potionBButton.setOrigin(1, 0);
     potionBButton.setDisplaySize(65, 50);
     potionBButton.setInteractive();
     potionBButton.on('pointerdown', () => {
-      this.scene.start('FactoryMenuHudScene2');
+      this.scene.start('FactoryMenuHudScene2', {
+        potionType: PotionType.UNCOMMON,
+      });
     });
     Phaser.Display.Align.In.TopLeft(potionBButton, background, -20, -125);
 
@@ -74,14 +79,16 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     });
     Phaser.Display.Align.In.TopRight(pricePotionB, background, -10, -130);
 
-    // -------------------- potion C button ----------------------
+    // -------------------- potion RARE button ----------------------
 
     let potionCButton = this.add.sprite(0, 0, 'potionC-button');
     potionCButton.setOrigin(1, 0);
     potionCButton.setDisplaySize(65, 50);
     potionCButton.setInteractive();
     potionCButton.on('pointerdown', () => {
-      this.scene.start('FactoryMenuHudScene2');
+      this.scene.start('FactoryMenuHudScene2', {
+        potionType: PotionType.RARE,
+      });
     });
     Phaser.Display.Align.In.TopLeft(potionCButton, background, -20, -195);
 
@@ -93,12 +100,6 @@ export class FactoryMenuHudScene extends Phaser.Scene {
       stroke: '#26150E',
     });
     Phaser.Display.Align.In.TopRight(pricePotionC, background, -10, -200);
-
-
-
-
-
-
 
     // -------------------- slidebar ----------------------
 

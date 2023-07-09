@@ -50,8 +50,8 @@ export default class MainScene extends Phaser.Scene {
 
     this.events.on(
       CORE_SUB_EVENTS.FACTORY_BREWING_BATCH_POTION,
-      (batch: number) => {
-        console.log('Brewing a batch of potion', batch);
+      (batch: BatchPotion) => {
+        this.factory.brewBatchPotion(batch);
       },
       this
     );

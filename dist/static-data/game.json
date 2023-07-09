@@ -42,7 +42,9 @@
     "type": {
       "common": {
         "properties": {
-          "texture": "potion-common"
+          "texture": "potion-common",
+          "herbTexture": "herb-common",
+          "bottleTexture": "bottle-common"
         },
         "gameDesign": {
           "ingredients": {
@@ -61,7 +63,9 @@
       },
       "uncommon": {
         "properties": {
-          "texture": "potion-uncommon"
+          "texture": "potion-uncommon",
+          "herbTexture": "herb-uncommon",
+          "bottleTexture": "bottle-uncommon"
         },
         "gameDesign": {
           "ingredients": {
@@ -80,7 +84,9 @@
       },
       "rare": {
         "properties": {
-          "texture": "potion-rare"
+          "texture": "potion-rare",
+          "herbTexture": "herb-rare",
+          "bottleTexture": "bottle-rare"
         },
         "gameDesign": {
           "ingredients": {

@@ -1,5 +1,5 @@
 import { GameStaticData } from '../../../interfaces/game-static-data';
-import { BatchPotion } from '../../potions/potion-interface';
+import { BatchPotion, PotionType } from '../../potions/potion-interface';
 import { FactoryInitData } from './factory-interface';
 import { FACTORY_PUB_EVENTS } from './factory-pubsub-events';
 
@@ -32,11 +32,11 @@ export class Factory extends Phaser.GameObjects.Sprite {
     this.clearTint();
   }
 
-  private onPointerHover(){
+  private onPointerHover() {
     this.setScale(1);
   }
 
-  private onPointerOut(){
+  private onPointerOut() {
     this.setScale(0.65);
   }
 
@@ -44,6 +44,10 @@ export class Factory extends Phaser.GameObjects.Sprite {
     const STATIC_DATA = this.currentScene.cache.json.get(
       'game-static-data'
     ) as GameStaticData;
-    console.log('Brewing a batch of potion', batchPotion);
+
+    const potionStaticData = STATIC_DATA.potion.type[PotionType.COMMON];
+    const texture = potionStaticData.properties.bottleTexture;
+    console.log('---- texture ----', texture);
+    console.log('Brewing a batch of potionnnn', batchPotion);
   }
 }

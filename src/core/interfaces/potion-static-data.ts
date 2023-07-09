@@ -26,6 +26,8 @@ export interface Rare {
 
 export interface Properties {
   texture: string;
+  herbTexture: string;
+  bottleTexture: string;
 }
 
 export interface GameDesign {
