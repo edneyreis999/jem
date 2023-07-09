@@ -64,33 +64,55 @@ export class WarehouseMenuHudScene extends Phaser.Scene {
 
     // storage bar
 
-    let sliderBackground = this.add.graphics();
-    sliderBackground.lineStyle(2, 0x26150E);
-    sliderBackground.strokeRoundedRect(
-      this.cameras.main.centerX,
-      this.cameras.main.centerY,
+    let commonStorageBackground = this.add.graphics();
+    commonStorageBackground.lineStyle(2, 0x26150e);
+    commonStorageBackground.strokeRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY - 65,
       200,
       30,
       5
     );
-    // sliderBackground.fillStyle(0x000, 50);
-    // sliderBackground.fillRoundedRect(
-    //   this.cameras.main.centerX - 130,
-    //   this.cameras.main.centerY - 130,
-    //   200,
-    //   30,
-    //   20
-    // );
-
-    let storage = this.add.zone(
+    let commonStorage = this.add.zone(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       200,
       30
     );
-    storage.setInteractive();
+    commonStorage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(commonStorage, background, -20, -60);
 
-    Phaser.Display.Align.In.TopLeft(storage, background, -20, -60);
+    let commonStorageUsageBackground = this.add.graphics();
+    commonStorageUsageBackground.fillStyle(0xb25d0f, 1);
+    commonStorageUsageBackground.fillRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY - 64,
+      60,
+      28,
+      5
+    );
+    let commonStorageUsage = this.add.zone(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
+      200,
+      30
+    );
+    commonStorageUsage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(commonStorageUsage, background, -20, -60);
+
+    let quantityCommonPotion = this.add.text(0, 0, '30/100', {
+      fontSize: '16px',
+      color: '#26150E',
+      fontFamily: 'Courier New',
+      strokeThickness: 2,
+      stroke: '#26150E',
+    });
+    Phaser.Display.Align.In.TopRight(
+      quantityCommonPotion,
+      background,
+      -80,
+      -72
+    );
 
     // -------------------- potion UNCOMMON storage ----------------------
     let potionUncommonSprite = this.add.sprite(0, 0, 'potionB-button');
@@ -101,7 +123,59 @@ export class WarehouseMenuHudScene extends Phaser.Scene {
       potionUncommonSprite,
       background,
       -20,
-      -130
+      -110
+    );
+
+    // storage bar
+
+    let uncommonStorageBackground = this.add.graphics();
+    uncommonStorageBackground.lineStyle(2, 0x26150e);
+    uncommonStorageBackground.strokeRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY - 15,
+      200,
+      30,
+      5
+    );
+    let uncommonStorage = this.add.zone(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
+      200,
+      30
+    );
+    uncommonStorage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(uncommonStorage, background, -20, -10);
+
+    let uncommonStorageUsageBackground = this.add.graphics();
+    uncommonStorageUsageBackground.fillStyle(0x6e1413, 1);
+    uncommonStorageUsageBackground.fillRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY - 14,
+      60,
+      28,
+      5
+    );
+    let uncommonStorageUsage = this.add.zone(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
+      200,
+      30
+    );
+    uncommonStorageUsage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(uncommonStorageUsage, background, -20, -10);
+
+    let quantityUncommonPotion = this.add.text(0, 0, '30/100', {
+      fontSize: '16px',
+      color: '#26150E',
+      fontFamily: 'Courier New',
+      strokeThickness: 2,
+      stroke: '#26150E',
+    });
+    Phaser.Display.Align.In.TopRight(
+      quantityUncommonPotion,
+      background,
+      -80,
+      -122
     );
 
     // -------------------- potion RARE storage ----------------------
@@ -109,7 +183,68 @@ export class WarehouseMenuHudScene extends Phaser.Scene {
     potionRareSprite.setOrigin(0, 0);
     potionRareSprite.setDisplaySize(200, 356);
     potionRareSprite.setScale(0.1);
-    Phaser.Display.Align.In.TopLeft(potionRareSprite, background, -20, -200);
+    Phaser.Display.Align.In.TopLeft(potionRareSprite, background, -20, -160);
+
+    // storage bar
+
+    let rareStorageBackground = this.add.graphics();
+    rareStorageBackground.lineStyle(2, 0x26150e);
+    rareStorageBackground.strokeRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY + 35,
+      200,
+      30,
+      5
+    );
+    let rareStorage = this.add.zone(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
+      200,
+      30
+    );
+    rareStorage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(rareStorage, background, -20, 30);
+
+    let rareStorageUsageBackground = this.add.graphics();
+    rareStorageUsageBackground.fillStyle(0x250944, 1);
+    rareStorageUsageBackground.fillRoundedRect(
+      this.cameras.main.centerX - 80,
+      this.cameras.main.centerY + 36,
+      60,
+      28,
+      5
+    );
+    let rareStorageUsage = this.add.zone(
+      this.cameras.main.centerX,
+      this.cameras.main.centerY,
+      200,
+      30
+    );
+    rareStorageUsage.setInteractive();
+    Phaser.Display.Align.In.TopLeft(rareStorageUsage, background, -20, 30);
+
+    let quantityRarePotion = this.add.text(0, 0, '30/100', {
+      fontSize: '16px',
+      color: '#26150E',
+      fontFamily: 'Courier New',
+      strokeThickness: 2,
+      stroke: '#26150E',
+    });
+    Phaser.Display.Align.In.TopRight(quantityRarePotion, background, -80, -172);
+
+
+
+    // ------------------ STORAGE TOTAL ----------------
+
+    let quantityStorageTotal = this.add.text(0, 0, '90/100', {
+      fontSize: '24px',
+      color: '#26150E',
+      fontFamily: 'Courier New',
+      strokeThickness: 2,
+      stroke: '#26150E',
+    });
+    Phaser.Display.Align.In.TopRight(quantityStorageTotal, background, -80, -222);
+
 
     // let title = this.add.text(0, 0, 'Warehouse menu', {
     //   fontSize: '32px',
