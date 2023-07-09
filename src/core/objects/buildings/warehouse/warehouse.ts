@@ -45,4 +45,8 @@ export class Warehouse extends Building {
   getFreeSlotCount() {
     return this.CURRENT_LEVEL_STATIC_DATA.capacity - this.ocupiedSlots;
   }
+
+  getCapacity() {
+    return this.CURRENT_LEVEL_STATIC_DATA.capacity;
+  }
 }

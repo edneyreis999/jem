@@ -3,7 +3,7 @@
     "name": "Player",
     "init": {
       "properties": {
-        "gold": 1000
+        "gold": 50000
       }
     }
   },
