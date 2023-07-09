@@ -31,7 +31,7 @@ export class FactoryMenuHudScene3 extends Phaser.Scene {
     let closeButton = this.add.sprite(0, 0, 'close-button');
     closeButton.setOrigin(1, 0);
     closeButton.setDisplaySize(40, 40);
-    closeButton.setScale(0.5);
+    closeButton.setScale(0.4);
     closeButton.setInteractive();
     closeButton.on('pointerdown', () => {
       this.scene.stop(this);
