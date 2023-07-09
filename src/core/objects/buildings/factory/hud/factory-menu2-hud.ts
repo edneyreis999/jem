@@ -57,7 +57,7 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
 
     let water = this.add.sprite(0, 0, 'water');
     water.setOrigin(0, 0);
-    water.setDisplaySize(25, 50);
+    // water.setDisplaySize(25, 50);
     water.setScale(1);
     Phaser.Display.Align.In.TopLeft(water, background, -20, -40);
 
@@ -92,8 +92,32 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     this.input.setDraggable(waterSliderButton);
     Phaser.Display.Align.In.TopCenter(waterSliderButton, background, 0, -60);
 
-    // --------------- Herb Assets -------------
+          // water price
+          let waterCoin = this.add.sprite(
+            0,
+            0,
+            'coin'
+          );
+          waterCoin.setOrigin(0, 0);
+          waterCoin.setDisplaySize(152, 356);
+          waterCoin.setScale(0.4);
+          Phaser.Display.Align.In.TopRight(waterCoin, background, -15, -60);
+    
+    
+          let waterPrice = this.add.text(0, 0, `${this.potionStaticData.gameDesign.ingredients.water}`, {
+            fontSize: '20px',
+            color: '#26150E',
+            fontFamily: 'Courier New',
+            strokeThickness: 2,
+            stroke: '#26150E',
+          });
+          waterCoin.setOrigin(0, 0);
+          Phaser.Display.Align.In.TopRight(waterPrice, background, -10, -60);
+        
 
+    // --------------- Herb Assets -------------
+      // herb sprite
+    
     let herb = this.add.sprite(
       0,
       0,
@@ -103,6 +127,8 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     herb.setDisplaySize(150, 170);
     herb.setScale(0.2);
     Phaser.Display.Align.In.TopLeft(herb, background, -20, -110);
+
+       // herb slider
 
     let herbSliderBackground = this.add.rectangle(
       this.cameras.main.centerX,
@@ -135,9 +161,33 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     this.input.setDraggable(herbSliderButton);
     Phaser.Display.Align.In.TopCenter(herbSliderButton, background, 0, -120);
 
+      // herb price
+      let herbCoin = this.add.sprite(
+        0,
+        0,
+        'coin'
+      );
+      herbCoin.setOrigin(0, 0);
+      herbCoin.setDisplaySize(152, 356);
+      herbCoin.setScale(0.4);
+      Phaser.Display.Align.In.TopRight(herbCoin, background, -15, -120);
+
+
+      let herbPrice = this.add.text(0, 0, `${this.potionStaticData.gameDesign.ingredients.herb}`, {
+        fontSize: '20px',
+        color: '#26150E',
+        fontFamily: 'Courier New',
+        strokeThickness: 2,
+        stroke: '#26150E',
+      });
+      herbCoin.setOrigin(0, 0);
+      Phaser.Display.Align.In.TopRight(herbPrice, background, -10, -120);
+
+      
+
     // --------------- Bottle Assets -------------
 
-        // bottle sprite
+      // bottle sprite
 
     let bottle = this.add.sprite(
       0,
@@ -145,9 +195,9 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
       this.potionStaticData.properties.bottleTexture
     );
     bottle.setOrigin(0, 0);
-    bottle.setDisplaySize(375, 744);
+    bottle.setDisplaySize(152, 356);
     bottle.setScale(0.1);
-    Phaser.Display.Align.In.TopLeft(bottle, background, -20, -170);
+    Phaser.Display.Align.In.TopLeft(bottle, background, -25, -170);
 
        // bottle slider
 
@@ -183,8 +233,28 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     Phaser.Display.Align.In.TopCenter(bottleSliderButton, background, 0, -180);
 
       // bottle price
-      
+      let bottleCoin = this.add.sprite(
+        0,
+        0,
+        'coin'
+      );
+      bottleCoin.setOrigin(0, 0);
+      bottleCoin.setDisplaySize(152, 356);
+      bottleCoin.setScale(0.4);
+      Phaser.Display.Align.In.TopRight(bottleCoin, background, -15, -180);
 
+
+      let bottlePrice = this.add.text(0, 0, `${this.potionStaticData.gameDesign.ingredients.bottle}`, {
+        fontSize: '20px',
+        color: '#26150E',
+        fontFamily: 'Courier New',
+        strokeThickness: 2,
+        stroke: '#26150E',
+      });
+      bottleCoin.setOrigin(0, 0);
+      Phaser.Display.Align.In.TopRight(bottlePrice, background, -10, -180);
+  
+  
 
     //   -------------- make potion button ------------
 

@@ -10,6 +10,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('potion-factory', 'assets/prod_button.png');
     this.load.image('potion-warehouse', 'assets/keep_button.png');
     this.load.image('close-button', 'assets/close-button.png');
+    this.load.image('coin', 'assets/coin.png');
 
     // factoryMenu1
     this.load.image('potionA-button', 'assets/potionAButton.png');

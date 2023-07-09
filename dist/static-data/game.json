@@ -50,7 +50,7 @@
           "ingredients": {
             "water": 1,
             "herb": 1,
-            "bottle": 1
+            "bottle": 3
           },
           "size": 1,
           "costToBrew": 10000,
@@ -70,8 +70,8 @@
         "gameDesign": {
           "ingredients": {
             "water": 1,
-            "herb": 1,
-            "bottle": 1
+            "herb": 3,
+            "bottle": 5
           },
           "size": 1,
           "costToBrew": 10000,
@@ -91,8 +91,8 @@
         "gameDesign": {
           "ingredients": {
             "water": 1,
-            "herb": 1,
-            "bottle": 1
+            "herb": 5,
+            "bottle": 10
           },
           "size": 1,
           "costToBrew": 10000,
