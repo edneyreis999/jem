@@ -3,7 +3,7 @@ import HUDScene from './core/gold/gold-hud-scene';
 import MainScene from './core/main-scene';
 import { FactoryMenuHudScene } from './core/objects/buildings/factory/hud/factory-menu1-hud';
 import { ShopMenuHudScene } from './core/objects/buildings/shop/hud/shop-menu1-hud';
-import { WarehouseMenuHudScene } from './core/objects/buildings/warehouse/hud/shop-menu1-hud';
+import { WarehouseMenuHudScene } from './core/objects/buildings/warehouse/hud/warehouse-menu1-hud';
 import PreloadScene from './preload-scene';
 import { FactoryMenuHudScene2 } from './core/objects/buildings/factory/hud/factory-menu2-hud';
 import { FactoryMenuHudScene3 } from './core/objects/buildings/factory/hud/factory-menu3-hud';
