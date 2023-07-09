@@ -15,7 +15,7 @@ export default class HUDScene extends Phaser.Scene {
     this.playerCoinTxt = this.add.text(50, 10, 'Gold: 0', {
       color: 'white',
       fontSize: '28px',
-      fontFamily: 'courrier',
+      fontFamily: 'Courier New',
     });
 
     this.playerCoinTxt.setOrigin(0);

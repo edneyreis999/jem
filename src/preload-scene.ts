@@ -18,9 +18,9 @@ export default class PreloadScene extends Phaser.Scene {
 
     // factoryMenu2
     this.load.image('water', 'assets/water.png');
-    this.load.image('ingredientA', 'assets/ingA.png');
-    this.load.image('ingredientB', 'assets/ingB.png');
-    this.load.image('ingredientC', 'assets/ingC.png');
+    this.load.image('herbA', 'assets/herbA.png');
+    this.load.image('herbB', 'assets/herbB.png');
+    this.load.image('herbC', 'assets/herbC.png');
     this.load.image('bottleA', 'assets/bottleA.png');
     this.load.image('bottleB', 'assets/bottleB.png');
     this.load.image('bottleC', 'assets/bottleC.png');
