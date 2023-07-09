@@ -50,9 +50,7 @@ export default class MainScene extends Phaser.Scene {
 
     this.events.on(
       CORE_SUB_EVENTS.FACTORY_BREWING_BATCH_POTION,
-      (batch: BatchPotion) => {
-        this.factory.brewBatchPotion(batch);
-      },
+      (batch: BatchPotion) => this.brewBatchPotion(batch),
       this
     );
   }
@@ -67,6 +65,19 @@ export default class MainScene extends Phaser.Scene {
     this.scene.launch('WarehouseMenuHudScene');
   }
   brewBatchPotion(batchPotion: BatchPotion) {
-    this.factory.brewBatchPotion(batchPotion);
+    const STATIC_DATA = this.cache.json.get(
+      'game-static-data'
+    ) as GameStaticData;
+    const potionStaticData = STATIC_DATA.potion.type[batchPotion.type];
+
+    if (this.player.getGold() < batchPotion.cost) {
+      // TODO: Display a message to the player
+    }
+
+    // Verify if the player has enough gold to brew the batch potion
+    // Verify if the warehouse has enough space to store the batch potion
+
+    console.log('Brewing a batch of potion', batchPotion);
+    console.log('Static Data of the potion', potionStaticData);
   }
 }

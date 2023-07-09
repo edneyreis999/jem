@@ -1,5 +1,3 @@
-export interface WarehouseInitData {
-  x: number;
-  y: number;
-  texture: string;
-}
+import { BuildingInitData } from '../building-interface';
+
+export interface WarehouseInitData extends BuildingInitData {}

@@ -1,42 +1,17 @@
 import * as Phaser from 'phaser';
+import { Building } from '../building';
 import { WarehouseInitData } from './warehouse-interface';
 import { WAREHOUSE_PUB_EVENTS } from './warehouse-pubsub-events';
 
-export class Warehouse extends Phaser.GameObjects.Sprite {
-  private currentScene: Phaser.Scene;
-
+export class Warehouse extends Building {
   constructor(scene: Phaser.Scene, initData: WarehouseInitData) {
-    super(scene, initData.x, initData.y, initData.texture);
-    this.currentScene = scene;
-    this.currentScene.add.existing(this);
-    this.setInteractive();
-    this.setOrigin(0, 0);
-    this.setScale(0.65);
-    // this.setDisplaySize(332 / 1.5, 147 / 1.5);
+    super(scene, initData);
     this.postFX.addShine(0.6, 0.5, 5);
-
-    this.on('pointerdown', this.onPointerDown, this);
-    this.on('pointerup', this.onPointerUp, this);
-    this.on('pointerover', this.onPointerHover, this);
-    this.on('pointerout', this.onPointerOut, this);
+    this.setOrigin(0, 0);
   }
 
-  private onPointerDown() {
+  protected onPointerDown() {
+    super.onPointerDown();
     this.currentScene.events.emit(WAREHOUSE_PUB_EVENTS.WAREHOUSE_DISPLAY_HUD);
-    this.setTint(0xff0000);
   }
-
-  private onPointerUp() {
-    this.clearTint();
-  }
-
-  private onPointerHover(){
-    this.setScale(1);
-  }
-
-  private onPointerOut(){
-    this.setScale(0.65);
-  }
-
-  
 }
