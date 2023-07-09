@@ -1,8 +1,30 @@
 import * as Phaser from 'phaser';
 import { PotionType } from '../../../potions/potion-interface';
+import {
+  Common,
+  Uncommon,
+  Rare,
+} from '../../../../interfaces/potion-static-data';
+import { GameStaticData } from '../../../../interfaces/game-static-data';
+
+export interface SceneInitProps {
+  potionType: PotionType;
+}
 export class FactoryMenuHudScene extends Phaser.Scene {
+  private potionStaticData: Common | Uncommon | Rare;
+
   constructor() {
     super({ key: 'FactoryMenuHudScene' });
+  }
+
+  init(data: SceneInitProps) {
+    const { potionType } = data;
+    const STATIC_DATA = this.cache.json.get(
+      'game-static-data'
+    ) as GameStaticData;
+    this.potionStaticData = STATIC_DATA.potion.type[potionType];
+
+    console.log('---- potionStaticData ----', this.potionStaticData);
   }
 
   create() {
@@ -38,68 +60,125 @@ export class FactoryMenuHudScene extends Phaser.Scene {
     // -------------------- potion COMMON button ----------------------
 
     let potionAButton = this.add.sprite(0, 0, 'potionA-button');
-    potionAButton.setOrigin(1, 0);
-    potionAButton.setDisplaySize(65, 50);
+    potionAButton.setOrigin(0, 0);
+    potionAButton.setDisplaySize(200, 356);
+    potionAButton.setScale(0.1);
     potionAButton.setInteractive();
     potionAButton.on('pointerdown', () => {
       this.scene.start('FactoryMenuHudScene2', {
         potionType: PotionType.COMMON,
       });
     });
-    Phaser.Display.Align.In.TopLeft(potionAButton, background, -20, -55);
+    Phaser.Display.Align.In.TopLeft(potionAButton, background, -20, -60);
 
-    let pricePotionA = this.add.text(0, 0, '10.000', {
-      fontSize: '40px',
-      color: '#26150E',
-      fontFamily: 'Courier New',
-      strokeThickness: 2,
-      stroke: '#26150E',
+    let commonBrewCoin = this.add.sprite(0, 0, 'coin');
+    commonBrewCoin.setOrigin(0, 0);
+    commonBrewCoin.setDisplaySize(152, 356);
+    commonBrewCoin.setScale(0.5);
+    Phaser.Display.Align.In.TopLeft(commonBrewCoin, background, -80, -68);
+
+    const STATIC_DATA = this.cache.json.get(
+      'game-static-data'
+    ) as GameStaticData;
+
+    let priceBrewCommon = this.add.text(
+      0,
+      0,
+      `${STATIC_DATA.potion.type.common.gameDesign.costToBrew}`,
+      {
+        fontSize: '40px',
+        color: '#26150E',
+        fontFamily: 'Courier New',
+        strokeThickness: 2,
+        stroke: '#26150E',
+      }
+    );
+    Phaser.Display.Align.In.TopRight(priceBrewCommon, background, -20, -60);
+
+    // -------------------- factory upgrade ----------------------
+
+    let factoryUpgradeButton = this.add.sprite(0, 0, 'upgrade-button');
+    factoryUpgradeButton.setOrigin(0, 0);
+    factoryUpgradeButton.setDisplaySize(48, 48);
+    factoryUpgradeButton.setScale(0.5);
+    factoryUpgradeButton.setInteractive();
+    factoryUpgradeButton.on('pointerdown', () => {
+      const levelUPText = this.add.text(0, 0, 'Level UP', {
+        fontSize: '36px',
+        color: '#ff0000',
+        fontFamily: 'Courier New',
+      });
+      Phaser.Display.Align.In.TopCenter(levelUPText, background, 0, -20);
     });
-    Phaser.Display.Align.In.TopRight(pricePotionA, background, -10, -60);
+    Phaser.Display.Align.In.TopLeft(factoryUpgradeButton, background, -10, -10);
 
     // -------------------- potion UNCOMMON button ----------------------
 
     let potionBButton = this.add.sprite(0, 0, 'potionB-button');
-    potionBButton.setOrigin(1, 0);
-    potionBButton.setDisplaySize(65, 50);
+    potionBButton.setOrigin(0, 0);
+    potionBButton.setDisplaySize(200, 356);
+    potionBButton.setScale(0.1);
     potionBButton.setInteractive();
     potionBButton.on('pointerdown', () => {
       this.scene.start('FactoryMenuHudScene2', {
         potionType: PotionType.UNCOMMON,
       });
     });
-    Phaser.Display.Align.In.TopLeft(potionBButton, background, -20, -125);
+    Phaser.Display.Align.In.TopLeft(potionBButton, background, -20, -130);
 
-    let pricePotionB = this.add.text(0, 0, '20.000', {
-      fontSize: '40px',
-      color: '#26150E',
-      fontFamily: 'Courier New',
-      strokeThickness: 2,
-      stroke: '#26150E',
-    });
-    Phaser.Display.Align.In.TopRight(pricePotionB, background, -10, -130);
+    let uncommonBrewCoin = this.add.sprite(0, 0, 'coin');
+    uncommonBrewCoin.setOrigin(0, 0);
+    uncommonBrewCoin.setDisplaySize(152, 356);
+    uncommonBrewCoin.setScale(0.5);
+    Phaser.Display.Align.In.TopLeft(uncommonBrewCoin, background, -80, -138);
+
+    let pricePotionB = this.add.text(
+      0,
+      0,
+      `${STATIC_DATA.potion.type.uncommon.gameDesign.costToBrew}`,
+      {
+        fontSize: '40px',
+        color: '#26150E',
+        fontFamily: 'Courier New',
+        strokeThickness: 2,
+        stroke: '#26150E',
+      }
+    );
+    Phaser.Display.Align.In.TopRight(pricePotionB, background, -20, -130);
 
     // -------------------- potion RARE button ----------------------
 
     let potionCButton = this.add.sprite(0, 0, 'potionC-button');
-    potionCButton.setOrigin(1, 0);
-    potionCButton.setDisplaySize(65, 50);
+    potionCButton.setOrigin(0, 0);
+    potionCButton.setDisplaySize(200, 356);
+    potionCButton.setScale(0.1);
     potionCButton.setInteractive();
     potionCButton.on('pointerdown', () => {
       this.scene.start('FactoryMenuHudScene2', {
         potionType: PotionType.RARE,
       });
     });
-    Phaser.Display.Align.In.TopLeft(potionCButton, background, -20, -195);
+    Phaser.Display.Align.In.TopLeft(potionCButton, background, -20, -200);
 
-    let pricePotionC = this.add.text(0, 0, '50.000', {
-      fontSize: '40px',
-      color: '#26150E',
-      fontFamily: 'Courier New',
-      strokeThickness: 2,
-      stroke: '#26150E',
-    });
-    Phaser.Display.Align.In.TopRight(pricePotionC, background, -10, -200);
+    let rareBrewCoin = this.add.sprite(0, 0, 'coin');
+    rareBrewCoin.setOrigin(0, 0);
+    rareBrewCoin.setDisplaySize(152, 356);
+    rareBrewCoin.setScale(0.5);
+    Phaser.Display.Align.In.TopLeft(rareBrewCoin, background, -80, -208);
+
+    let pricePotionC = this.add.text(
+      0,
+      0,
+      `${STATIC_DATA.potion.type.rare.gameDesign.costToBrew}`,
+      {
+        fontSize: '40px',
+        color: '#26150E',
+        fontFamily: 'Courier New',
+        strokeThickness: 2,
+        stroke: '#26150E',
+      }
+    );
+    Phaser.Display.Align.In.TopRight(pricePotionC, background, -20, -200);
 
     // -------------------- slidebar ----------------------
 
