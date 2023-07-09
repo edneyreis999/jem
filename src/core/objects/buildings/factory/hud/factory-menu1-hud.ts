@@ -1,11 +1,11 @@
 import * as Phaser from 'phaser';
-import { PotionType } from '../../../potions/potion-interface';
+import { GameStaticData } from '../../../../interfaces/game-static-data';
 import {
   Common,
-  Uncommon,
   Rare,
+  Uncommon,
 } from '../../../../interfaces/potion-static-data';
-import { GameStaticData } from '../../../../interfaces/game-static-data';
+import { PotionType } from '../../../potions/potion-interface';
 
 export interface SceneInitProps {
   potionType: PotionType;
@@ -23,8 +23,6 @@ export class FactoryMenuHudScene extends Phaser.Scene {
       'game-static-data'
     ) as GameStaticData;
     this.potionStaticData = STATIC_DATA.potion.type[potionType];
-
-    console.log('---- potionStaticData ----', this.potionStaticData);
   }
 
   create() {

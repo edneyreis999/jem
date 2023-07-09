@@ -25,12 +25,6 @@ export class FactoryMenuHudScene3 extends Phaser.Scene {
     );
     background.setInteractive();
 
-    // let title = this.add.text(0, 0, 'Factory menu', {
-    //   fontSize: '32px',
-    //   color: '#fff',
-    // });
-    // Phaser.Display.Align.In.TopLeft(title, background);
-
     let closeButton = this.add.sprite(0, 0, 'close-button');
     closeButton.setOrigin(1, 0);
     closeButton.setDisplaySize(40, 40);
