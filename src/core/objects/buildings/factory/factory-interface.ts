@@ -1,5 +1,3 @@
-export interface FactoryInitData {
-  x: number;
-  y: number;
-  texture: string;
-}
+import { BuildingInitData } from '../building-interface';
+
+export interface FactoryInitData extends BuildingInitData {}

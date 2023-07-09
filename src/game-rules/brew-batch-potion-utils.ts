@@ -13,7 +13,7 @@ export const calcaulateBatchPotion = ({
 }) => {
   const batchPotion = {
     type: PotionType.COMMON,
-    price: 13000,
+    cost: 13000,
     quantity: 58,
     waterPercent: 33,
     herbPercent: 33,

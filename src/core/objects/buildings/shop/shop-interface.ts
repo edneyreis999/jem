@@ -1,5 +1,3 @@
-export interface ShopInitData {
-  x: number;
-  y: number;
-  texture: string;
-}
+import { BuildingInitData } from '../building-interface';
+
+export interface ShopInitData extends BuildingInitData {}
