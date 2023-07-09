@@ -5,27 +5,28 @@ import { Factory } from './objects/buildings/factory/factory';
 import { Shop } from './objects/buildings/shop/shop';
 import { Warehouse } from './objects/buildings/warehouse/warehouse';
 import { Player } from './objects/player/player';
+import { BatchPotion } from './objects/potions/potion-interface';
 
 export default class MainScene extends Phaser.Scene {
+  private STATIC_DATA: GameStaticData;
   private layer: Phaser.GameObjects.Container;
   private player: Player;
   private factory: Factory;
   private shop: Shop;
   private warehouse: Warehouse;
-  private STATIC_DATA: GameStaticData;
   constructor() {
     super({ key: 'MainScene' });
   }
 
   create() {
     this.layer = this.add.container();
+    this.STATIC_DATA = this.cache.json.get(
+      'game-static-data'
+    ) as GameStaticData;
 
     const bg = this.add.image(0, 0, 'background').setOrigin(0);
     this.layer.add(bg);
 
-    this.STATIC_DATA = this.cache.json.get(
-      'game-static-data'
-    ) as GameStaticData;
     this.player = new Player(this, this.STATIC_DATA.player.init.properties);
     this.factory = new Factory(this, this.STATIC_DATA.factory.init.properties);
     this.shop = new Shop(this, this.STATIC_DATA.shop.init.properties);
@@ -46,6 +47,14 @@ export default class MainScene extends Phaser.Scene {
       this.displayWarehouseHUD,
       this
     );
+
+    this.events.on(
+      CORE_SUB_EVENTS.FACTORY_BREWING_BATCH_POTION,
+      (batch: number) => {
+        console.log('Brewing a batch of potion', batch);
+      },
+      this
+    );
   }
 
   displayFactoryHUD() {
@@ -56,5 +65,8 @@ export default class MainScene extends Phaser.Scene {
   }
   displayWarehouseHUD() {
     this.scene.launch('WarehouseMenuHudScene');
+  }
+  brewBatchPotion(batchPotion: BatchPotion) {
+    this.factory.brewBatchPotion(batchPotion);
   }
 }

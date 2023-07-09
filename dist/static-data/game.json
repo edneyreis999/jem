@@ -36,5 +36,67 @@
         "texture": "potion-warehouse"
       }
     }
+  },
+  "potion": {
+    "name": "Potion",
+    "type": {
+      "common": {
+        "properties": {
+          "texture": "potion-common"
+        },
+        "gameDesign": {
+          "ingredients": {
+            "water": 1,
+            "herb": 1,
+            "bottle": 1
+          },
+          "size": 1,
+          "costToBrew": 10000,
+          "rangeToSell": {
+            "min": 10,
+            "max": 20
+          },
+          "timeToBrew": 10000
+        }
+      },
+      "uncommon": {
+        "properties": {
+          "texture": "potion-uncommon"
+        },
+        "gameDesign": {
+          "ingredients": {
+            "water": 1,
+            "herb": 1,
+            "bottle": 1
+          },
+          "size": 1,
+          "costToBrew": 10000,
+          "rangeToSell": {
+            "min": 10,
+            "max": 20
+          },
+          "timeToBrew": 10000
+        }
+      },
+      "rare": {
+        "properties": {
+          "texture": "potion-rare"
+        },
+        "gameDesign": {
+          "ingredients": {
+            "water": 1,
+            "herb": 1,
+            "bottle": 1
+          },
+          "size": 1,
+          "costToBrew": 10000,
+          "rangeToSell": {
+            "min": 10,
+            "max": 20
+          },
+          "timeToBrew": 10000
+        }
+      }
+    }
   }
 }

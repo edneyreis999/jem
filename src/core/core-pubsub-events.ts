@@ -8,4 +8,6 @@ export enum CORE_SUB_EVENTS {
   FACTORY_DISPLAY_HUD = 'factory.display.hud',
   SHOP_DISPLAY_HUD = 'shop.display.hud',
   WAREHOUSE_DISPLAY_HUD = 'warehouse.display.hud',
+
+  FACTORY_BREWING_BATCH_POTION = 'brewing.a.batch.of.potion',
 }

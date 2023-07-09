@@ -1,5 +1,6 @@
 import { FactoryStaticData } from './factory-static-data';
 import { Player } from './player-static-data';
+import { PotionStaticData } from './potion-static-data';
 import { ShopStaticData } from './shop-static-data';
 import { WarehouseStaticData } from './warehouse-static-data';
 
@@ -8,4 +9,5 @@ export interface GameStaticData {
   factory: FactoryStaticData;
   warehouse: WarehouseStaticData;
   shop: ShopStaticData;
+  potion: PotionStaticData;
 }

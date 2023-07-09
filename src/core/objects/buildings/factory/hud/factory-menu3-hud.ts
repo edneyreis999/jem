@@ -1,4 +1,7 @@
 import * as Phaser from 'phaser';
+import { calcaulateBatchPotion } from '../../../../../game-rules/brew-batch-potion-utils';
+import { PotionType } from '../../../potions/potion-interface';
+import { FACTORY_PUB_EVENTS } from './factory-hud-pubsub-events';
 export class FactoryMenuHudScene3 extends Phaser.Scene {
   constructor() {
     super({ key: 'FactoryMenuHudScene3' });
@@ -72,10 +75,21 @@ export class FactoryMenuHudScene3 extends Phaser.Scene {
     makeLoteButton.setScale(1);
     makeLoteButton.setInteractive();
     makeLoteButton.on('pointerdown', () => {
-      this.scene.start('FactoryMenuHudScene3');
+      // TODO - get the values from the slider and send to the game rules utils to calculate the batch potion
+      const batchPotion = calcaulateBatchPotion({
+        potionType: PotionType.COMMON,
+        quantity: 1,
+        bottleQuantity: 1,
+        herbQuantity: 1,
+        waterQuantity: 1,
+      });
+      const gameController = this.scene.get('MainScene');
+      gameController.events.emit(
+        FACTORY_PUB_EVENTS.FACTORY_BREWING_BATCH_POTION,
+        batchPotion
+      );
+      this.scene.stop(this);
     });
     Phaser.Display.Align.In.BottomCenter(makeLoteButton, background, 0, -5);
-
-
   }
 }

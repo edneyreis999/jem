@@ -1,3 +1,5 @@
+import { GameStaticData } from '../../../interfaces/game-static-data';
+import { BatchPotion } from '../../potions/potion-interface';
 import { FactoryInitData } from './factory-interface';
 import { FACTORY_PUB_EVENTS } from './factory-pubsub-events';
 
@@ -26,5 +28,12 @@ export class Factory extends Phaser.GameObjects.Sprite {
 
   private onPointerUp() {
     this.clearTint();
+  }
+
+  brewBatchPotion(batchPotion: BatchPotion) {
+    const STATIC_DATA = this.currentScene.cache.json.get(
+      'game-static-data'
+    ) as GameStaticData;
+    console.log('Brewing a batch of potion', batchPotion);
   }
 }
