@@ -35,6 +35,8 @@ export default class MainScene extends Phaser.Scene {
       this.STATIC_DATA.warehouse.init.properties
     );
 
+    this.warehouse.init();
+
     // create events
     this.events.on(
       CORE_SUB_EVENTS.FACTORY_DISPLAY_HUD,
@@ -68,16 +70,21 @@ export default class MainScene extends Phaser.Scene {
     const STATIC_DATA = this.cache.json.get(
       'game-static-data'
     ) as GameStaticData;
-    const potionStaticData = STATIC_DATA.potion.type[batchPotion.type];
+    const potionStaticData =
+      STATIC_DATA.potion.type[batchPotion.type].gameDesign;
 
     if (this.player.getGold() < batchPotion.cost) {
       // TODO: Display a message to the player
+      return;
+    }
+    if (this.warehouse.getFreeSlotCount() < batchPotion.quantity) {
+      // TODO: Display a message to the player
+      return;
     }
 
-    // Verify if the player has enough gold to brew the batch potion
-    // Verify if the warehouse has enough space to store the batch potion
-
-    console.log('Brewing a batch of potion', batchPotion);
-    console.log('Static Data of the potion', potionStaticData);
+    // everything is ok, brew the potion
+    this.player.removeGold(batchPotion.cost);
+    const quantity = batchPotion.quantity * potionStaticData.size;
+    this.warehouse.addPotion(quantity);
   }
 }

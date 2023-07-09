@@ -3,6 +3,7 @@ import { BuildingInitData } from './building-interface';
 
 export abstract class Building extends Phaser.GameObjects.Sprite {
   protected currentScene: Phaser.Scene;
+  protected currentLevel: number = 1;
 
   constructor(scene: Phaser.Scene, initData: BuildingInitData) {
     super(scene, initData.x, initData.y, initData.texture);
@@ -32,5 +33,13 @@ export abstract class Building extends Phaser.GameObjects.Sprite {
 
   protected onPointerOut() {
     this.setScale(0.65);
+  }
+
+  get level() {
+    return this.currentLevel;
+  }
+
+  levelUp() {
+    this.currentLevel += 1;
   }
 }
