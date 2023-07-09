@@ -11,17 +11,17 @@ export interface Type {
 
 export interface Common {
   properties: Properties;
-  gameDesign: GameDesign;
+  gameDesign: PotionGameDesign;
 }
 
 export interface Uncommon {
   properties: Properties;
-  gameDesign: GameDesign;
+  gameDesign: PotionGameDesign;
 }
 
 export interface Rare {
   properties: Properties;
-  gameDesign: GameDesign;
+  gameDesign: PotionGameDesign;
 }
 
 export interface Properties {
@@ -30,7 +30,7 @@ export interface Properties {
   bottleTexture: string;
 }
 
-export interface GameDesign {
+export interface PotionGameDesign {
   ingredients: Ingredients;
   size: number;
   costToBrew: number;

@@ -1,11 +1,12 @@
 import * as Phaser from 'phaser';
+import { calculateBatchPotion } from '../game-rules/brew-batch-potion-utils';
 import { CORE_SUB_EVENTS } from './core-pubsub-events';
 import { GameStaticData } from './interfaces/game-static-data';
 import { Factory } from './objects/buildings/factory/factory';
+import { FactoryWizardValues } from './objects/buildings/factory/factory-interface';
 import { Shop } from './objects/buildings/shop/shop';
 import { Warehouse } from './objects/buildings/warehouse/warehouse';
 import { Player } from './objects/player/player';
-import { BatchPotion } from './objects/potions/potion-interface';
 
 export default class MainScene extends Phaser.Scene {
   private STATIC_DATA: GameStaticData;
@@ -52,7 +53,8 @@ export default class MainScene extends Phaser.Scene {
 
     this.events.on(
       CORE_SUB_EVENTS.FACTORY_BREWING_BATCH_POTION,
-      (batch: BatchPotion) => this.brewBatchPotion(batch),
+      (factoryWizardValues: FactoryWizardValues) =>
+        this.brewBatchPotion(factoryWizardValues),
       this
     );
   }
@@ -66,12 +68,21 @@ export default class MainScene extends Phaser.Scene {
   displayWarehouseHUD() {
     this.scene.launch('WarehouseMenuHudScene');
   }
-  brewBatchPotion(batchPotion: BatchPotion) {
+  brewBatchPotion(factoryWizzardValues: FactoryWizardValues) {
     const STATIC_DATA = this.cache.json.get(
       'game-static-data'
     ) as GameStaticData;
     const potionStaticData =
-      STATIC_DATA.potion.type[batchPotion.type].gameDesign;
+      STATIC_DATA.potion.type[factoryWizzardValues.potionType].gameDesign;
+
+    const { costToBrew } = potionStaticData;
+    const { water, herb, bottle } = potionStaticData.ingredients;
+
+    const batchPotion = calculateBatchPotion(factoryWizzardValues, costToBrew, {
+      water,
+      herb,
+      bottle,
+    });
 
     if (this.player.getGold() < batchPotion.cost) {
       // TODO: Display a message to the player
