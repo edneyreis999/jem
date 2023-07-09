@@ -19,6 +19,8 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
   private bottleSlider: Slider;
   private coinButton: CoinButton;
 
+  private potionType: PotionType;
+
   constructor() {
     super({ key: 'FactoryMenuHudScene2' });
   }
@@ -29,6 +31,7 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
       'game-static-data'
     ) as GameStaticData;
     this.potionStaticData = STATIC_DATA.potion.type[potionType];
+    this.potionType = potionType;
   }
 
   create() {
@@ -198,13 +201,24 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     // calculate potion cost for the first time
     const potionCost = this.calculatePotionUnitCost();
 
+    const potionType = this.potionType;
     this.coinButton = new CoinButton(
       this,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       `${potionCost}`,
       () => {
-        this.scene.start('FactoryMenuHudScene3');
+        const potionCost = this.calculatePotionUnitCost();
+        const waterValue = this.waterSlider.getValue();
+        const herbValue = this.herbSlider.getValue();
+        const bottleValue = this.bottleSlider.getValue();
+        this.scene.start('FactoryMenuHudScene3', {
+          potionType,
+          waterValue,
+          herbValue,
+          bottleValue,
+          potionCost,
+        });
       }
     );
 

@@ -26,7 +26,7 @@ export const calculateBatchPotion = (
   const batchPotion = {
     type: potionType,
     cost: roundedCost,
-    quantity: brewQuantity,
+    brewQuantity: brewQuantity,
     waterPercent: (waterValue / (waterValue + herbValue + bottleValue)) * 100,
     herbPercent: (herbValue / (waterValue + herbValue + bottleValue)) * 100,
     bottlePercent: (bottleValue / (waterValue + herbValue + bottleValue)) * 100,

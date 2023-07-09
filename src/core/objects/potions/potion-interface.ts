@@ -1,7 +1,7 @@
 export interface BatchPotion {
   type: PotionType;
   cost: number;
-  quantity: number;
+  brewQuantity: number;
   waterPercent: number;
   herbPercent: number;
   bottlePercent: number;

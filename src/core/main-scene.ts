@@ -89,7 +89,7 @@ export default class MainScene extends Phaser.Scene {
       console.log('not enough gold');
       return;
     }
-    if (this.warehouse.getFreeSlotCount() < batchPotion.quantity) {
+    if (this.warehouse.getFreeSlotCount() < batchPotion.brewQuantity) {
       // TODO: Display a message to the player
       console.log('not enough space');
       return;
@@ -97,7 +97,7 @@ export default class MainScene extends Phaser.Scene {
 
     // everything is ok, brew the potion
     this.player.removeGold(batchPotion.cost);
-    const quantity = batchPotion.quantity * potionStaticData.size;
+    const quantity = batchPotion.brewQuantity * potionStaticData.size;
     this.warehouse.addPotion(quantity);
 
     console.log(`brewed ${quantity} potions`);
