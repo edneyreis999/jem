@@ -71,6 +71,8 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     this.waterSlider = new Slider(
       this,
       33,
+      0,
+      100,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       120,
@@ -118,6 +120,8 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     this.herbSlider = new Slider(
       this,
       33,
+      0,
+      100,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       120,
@@ -167,6 +171,8 @@ export class FactoryMenuHudScene2 extends Phaser.Scene {
     this.bottleSlider = new Slider(
       this,
       33,
+      0,
+      100,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       120,

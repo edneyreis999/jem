@@ -85,27 +85,29 @@ export class FactoryMenuHudScene3 extends Phaser.Scene {
     potionAButton.setScale(0.1);
     Phaser.Display.Align.In.LeftCenter(potionAButton, background, 0, 0);
 
-    let textCoin = new TextCoin(
+    let textPotionCost = new TextCoin(
       this,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      '100'
+      `${this.potionCost}`
     );
 
-    Phaser.Display.Align.In.Center(textCoin, background, 0, 0);
-    // Phaser.Display.Align.To.RightCenter(textCoin, potionAButton, 10);
+    Phaser.Display.Align.In.Center(textPotionCost, background, 0, 0);
 
     // ------------ slider button ------------
 
     let sliderButton = new Slider(
       this,
       50,
+      0,
+      100,
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       200,
       5,
       0x175682
     );
+
     this.brewQuantity = sliderButton.getValue();
     sliderButton.on('changed', (value) => {
       this.brewQuantity = value;
